@@ -12,38 +12,7 @@
         </div>
       </div>
     </div>
-    <!-- <slider
-      class="wrapper"
-      ref="slider"
-      :listenScroll="true"
-      @scroll="handleScroll"
-      :probeType="3"
-      :data="listInfo.tracks">
-      <div class="content">
-        <div class="songs">
-          <div class="song-item" v-for="(item, index) in listInfo.tracks" :key="item.id">
-            <span class="index">{{ index }}</span>
-            <div class="item-wrapper border-bottom">
-              <div class="name-wrapper">
-                <p>
-                  <span class="song-name">{{item.name}}</span>
-                  <span class="tn" v-for="(tn, idx) in item.tns" :key="idx">({{ tn }})</span>
-                </p>
-              </div>
-              <div class="singers">
-                <p>
-                  <span class="singer" v-for="(singer, index) in item.ar" :key="index">
-                    {{ singer.name }} -
-                  </span>
-                  <span class="al">{{ item.al.name }}</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </slider> -->
-    <song-list :songList="songList" v-if="songList" @pushY="getY"></song-list>
+    <song-list :songList="songList" v-if="songList.length" @pushY="getY"></song-list>
   </div>
 </template>
 

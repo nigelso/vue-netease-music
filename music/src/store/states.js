@@ -1,9 +1,9 @@
 const state = {
-  profile: null,
+  profile: {},
   playState: false,
   fullScreen: false,
   currentIndex: -1,
-  currentList: null
+  currentList: []
 };
 
 export default state;

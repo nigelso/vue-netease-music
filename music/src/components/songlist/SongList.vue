@@ -7,7 +7,7 @@
     :probeType="3">
     <div class="content">
       <div class="songs">
-        <div class="song-item" v-for="(item, index) in songList" :key="item.id">
+        <div class="song-item" v-for="(item, index) in songList" :key="item.id" @click="goPlay(index)">
           <span class="index">{{ index + 1 }}</span>
           <div class="item-wrapper border-bottom">
             <div class="name-wrapper">
@@ -33,14 +33,41 @@
 
 <script>
 import Slider from "components/slider/Slider"
+import { songUrl, songDetail } from "api/home"
+import { mapActions } from "vuex"
 export default {
   props: ["songList"],
   data () {
     return {
+      detailList: []
     }
   },
   components: {
     Slider
+  },
+  created () {
+    let songList = this.songList
+    let songId = []
+    songList.forEach(element => {
+      songId.push(element.id)
+    })
+    let songStr = songId.join(",")
+    songDetail(songStr).then(res => {
+      let detailList = res.songs
+      songUrl(songStr).then(res => {
+        // console.log(res)
+        let urls = res.data
+        urls.forEach(element => {
+          detailList.forEach(ele => {
+            if (element.id == ele.id) {
+              ele.url = element.url
+            }
+          })
+        })
+        // this.songList = songList
+        this.detailList = detailList
+      })
+    })
   },
   mounted () {
     this._setHeight()
@@ -51,6 +78,7 @@ export default {
     })
   },
   methods: {
+    ...mapActions(["setPlay"]),
     _setHeight() {
       let slider = this.$refs.slider
       let sliderHeight = window.innerHeight - 310
@@ -58,6 +86,15 @@ export default {
     },
     handleScroll(pos) {
       this.$emit("pushY", pos)
+    },
+    goPlay(index) {
+      console.log(this.detailList)
+      this.setPlay({
+        playstate: true,
+        fullscreen: true,
+        index,
+        list: this.detailList
+      })
     }
   }
 }

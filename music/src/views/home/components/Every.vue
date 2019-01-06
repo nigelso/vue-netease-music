@@ -58,17 +58,21 @@ export default {
       res.recommend.forEach(element => {
         songId.push(element.id)
       })
-      let songIdStr = songId.join(",")
-      songDetail(songIdStr).then(res => {
+      songDetail(songId.join(",")).then(res => {
         let detailList = res.songs
-        songUrl(songIdStr).then(res => {
-          let songUrl = res.data
-          detailList.forEach((element, index) => {
-            element.url = songUrl[index].url
+        songUrl(songId.join(",")).then(res => {
+          // console.log(res)
+          let urls = res.data
+          urls.forEach(element => {
+            detailList.forEach(ele => {
+              if (element.id == ele.id) {
+                ele.url = element.url
+              }
+            })
           })
+          // this.songList = songList
+          this.detailList = detailList
         })
-        this.detailList = detailList
-        console.log(detailList)
       })
     })
   },
@@ -87,17 +91,13 @@ export default {
       slider.$el.style.height = windowHeight - offsetTop - 60 + "px"
     },
     goPlay(index) {
-      console.log(this.detailList)
+      console.log(this.songList)
       this.setPlay({
         playstate: true,
         fullscreen: true,
         index,
         list: this.detailList
       })
-      setTimeout(() => {
-        console.log(this.$store.state)
-      }, 500);
-      console.log(index)
     }
   },
   computed: {

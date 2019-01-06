@@ -4,5 +4,5 @@ export const fullScreen = state => state.fullScreen;
 export const currentIndex = state => state.currentIndex;
 export const currentList = state => state.currentList;
 export const currentSong = state => {
-  return state.currentList[currentIndex] || {};
+  return state.currentList[state.currentIndex] || {};
 };
