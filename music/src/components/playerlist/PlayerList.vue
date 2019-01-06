@@ -1,6 +1,6 @@
 <template>
   <div>
-    home
+    PLAYERLIST
   </div>
 </template>
 
@@ -17,7 +17,6 @@ export default {
 }
 </script>
 
-<style scoped lang='stylus'>
+<style scoped lang=''>
 
 </style>
-

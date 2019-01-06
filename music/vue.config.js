@@ -1,3 +1,7 @@
+const path = require("path");
+function resolve (dir) {
+  return path.join(__dirname, dir)
+}
 module.exports = {
   // 基本路径
   baseUrl: "/",
@@ -10,7 +14,14 @@ module.exports = {
   // compiler: false,
   // webpack配置
   // see https://github.com/vuejs/vue-cli/blob/dev/docs/webpack.md
-  chainWebpack: () => {},
+  chainWebpack: config => {
+    config.resolve.alias
+      .set("@", resolve("src"))
+      .set("components", resolve("src/components"))
+      .set("api", resolve("src/api"))
+      .set("style", resolve("src/assets/css"))
+      .set("assets", resolve("src/assets"))
+  },
   configureWebpack: () => {},
   // vue-loader 配置项
   // https://vue-loader.vuejs.org/en/options.html
@@ -20,7 +31,7 @@ module.exports = {
   // css相关配置
   css: {
     // 是否使用css分离插件 ExtractTextPlugin
-    extract: true,
+    extract: false,
     // 开启 CSS source maps?
     sourceMap: false,
     // css预设器配置项
@@ -40,7 +51,7 @@ module.exports = {
   // webpack-dev-server 相关配置
   devServer: {
     open: process.platform === "darwin",
-    host: "0.0.0.0",
+    host: "192.168.2.24",
     port: 8080,
     https: false,
     hotOnly: false,

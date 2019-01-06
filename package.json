@@ -19,6 +19,7 @@
   "dependencies": {
     "apicache": "^1.2.1",
     "express": "^4.16.3",
+    "fastclick": "^1.0.6",
     "request": "^2.85.0"
   },
   "devDependencies": {
