@@ -18,7 +18,7 @@
         <list>
           <ul>
             <li class="list-item" v-for="item in hotList" :key="item.id">
-              <img class="img" :src="item.coverImgUrl">
+              <img class="img" v-lazy="item.coverImgUrl">
               <span class="name">{{ item.name }}</span>
             </li>
           </ul>
@@ -27,7 +27,7 @@
         <list>
           <ul>
             <li class="list-item" v-for="item in filterItems" :key="item.id">
-              <img class="img" :src="item.coverImgUrl">
+              <img class="img" v-lazy="item.coverImgUrl">
               <span class="name">{{ item.name }}</span>
             </li>
           </ul>

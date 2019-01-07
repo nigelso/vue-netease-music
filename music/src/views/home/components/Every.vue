@@ -15,7 +15,7 @@
       <div class="content">
         <div class="songs">
           <div class="song-item border-top" v-for="(item, index) in songList" :key="item.id" @click="goPlay(index)">
-            <img :src="item.album.picUrl" width="50" height="50" class="img">
+            <img v-lazy="item.album.picUrl" width="50" height="50" class="img">
             <div class="info-wrapper">
               <div class="name">{{ item.name }}</div>
               <div class="singers">

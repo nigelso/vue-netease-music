@@ -7,21 +7,11 @@
       :style="{
         backgroundImage: `url(${singerInfo.img1v1Url})`,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'top center',
+        backgroundPosition: 'center top',
         backgroundSize: 'cover'
       }
     ">
     </div>
-    <!-- <slider ref="slider" class="wrapper" :probeType='3' :listenScroll="true" @scroll="handleScroll">
-      <div class="content">
-        <div class="song-list">
-          <div class="song-item" v-for="(item, index) in songList" :key="item.id">
-            <span class="index">{{ index + 1 }}</span>
-            <span class="name border-bottom">{{ item.name }}</span>
-          </div>
-        </div>
-      </div>
-    </slider> -->
     <list  @pushY="getY" :songList="songList" :singerInfo="singerInfo" v-if="songList.length"></list>
   </div>
 </template>
@@ -80,5 +70,5 @@ export default {
   z-index 999
   .img-wrapper
     width 100%
-    height 300px
+    height 250px
 </style>

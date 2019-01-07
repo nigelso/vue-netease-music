@@ -19,6 +19,7 @@
 import CHeader from "components/header/CHeader"
 import Player from "components/player/Player"
 import SideBar from 'components/sidebar/SideBar'
+import axios from "axios"
 export default {
   data () {
     return {
@@ -29,6 +30,8 @@ export default {
     CHeader,
     Player,
     SideBar
+  },
+  mounted () {
   },
   methods: {
     handleChange() {
